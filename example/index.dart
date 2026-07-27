@@ -1,3 +1,11 @@
+/*void main() {
+    int name = 2;
+    print("Hello world ${name.toString()}");
+} */
+
 void main() {
-    print("Hello world!");
+  int number = 2;
+  int number2 = 2;
+
+  print("O resultado da soma é ${number2 + number}");
 }
