@@ -4,8 +4,15 @@
 } */
 
 void main() {
-  int number = 2;
-  int number2 = 2;
+  String pessoa1 = Pessoa.nome('Iago');
 
-  print("O resultado da soma é ${number2 + number}");
+  print(pessoa1);
+}
+
+class Pessoa {
+  String name = "";
+  
+  static String nome(String name) {
+    return name;
+  }
 }
