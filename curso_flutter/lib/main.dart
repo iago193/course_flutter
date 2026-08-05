@@ -1,6 +1,45 @@
 import 'package:flutter/material.dart';
 
 void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('MyApp')),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Center(
+              child: Text('Coluna 1', style: TextStyle(fontSize: 25)),
+            ),
+            Center(
+              child: Text('Coluna 2', style: TextStyle(fontSize: 25)),
+            ),
+            Center(
+              child: Text('Coluna 3', style: TextStyle(fontSize: 25)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/*
+import 'package:flutter/material.dart';
+
+void main() {
   runApp(MyApp(name: 'Iago'));
 }
 
@@ -16,6 +55,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int salario = 7000;
 
+  void aumentaSalario( int valor) {
+    setState(() {
+      this.salario = this.salario + valor;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,9 +69,7 @@ class _MyAppState extends State<MyApp> {
           child: GestureDetector(
             onTap: () {
               print('Apetou aqui');
-              setState(() {
-                salario = salario + 100;
-              });
+              aumentaSalario(100);
             },
             child: Text(
               'O salário de ${widget.name} é $salario',
@@ -40,7 +83,7 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-/*
+
 import 'package:flutter/material.dart';
 
 void main() {
