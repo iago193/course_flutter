@@ -4,78 +4,35 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('MyApp')),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Center(
-              child: Text('Coluna 1', style: TextStyle(fontSize: 25)),
-            ),
-            Center(
-              child: Text('Coluna 2', style: TextStyle(fontSize: 25)),
-            ),
-            Center(
-              child: Text('Coluna 3', style: TextStyle(fontSize: 25)),
-            ),
-          ],
-        ),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Tela1(),
+        '/tela2': (context) => const Tela2()
+      },
     );
   }
 }
 
-/*
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp(name: 'Iago'));
-}
-
-class MyApp extends StatefulWidget {
-  final String name;
-
-  const MyApp({super.key, this.name = ''});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  int salario = 7000;
-
-  void aumentaSalario( int valor) {
-    setState(() {
-      this.salario = this.salario + valor;
-    });
-  }
+class Tela1 extends StatelessWidget {
+  const Tela1({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(title: Text('Tela 1'), backgroundColor: Colors.red),
         body: Center(
-          child: GestureDetector(
-            onTap: () {
-              print('Apetou aqui');
-              aumentaSalario(100);
+          child: ElevatedButton(
+            onPressed: () {
+             Navigator.pushNamed(context, '/tela2');
             },
-            child: Text(
-              'O salário de ${widget.name} é $salario',
-              style: TextStyle(color: Colors.black),
-              textDirection: TextDirection.ltr,
-            ),
+            child: Text('Ir Para tela 2'),
           ),
         ),
       ),
@@ -83,34 +40,21 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-
-import 'package:flutter/material.dart';
-
-void main() {
-  int valor = 10;
-  runApp(MyApp(valor: valor, title: 'MyApp'));
-}
-
-class MyApp extends StatelessWidget {
-  final String title;
-  final int valor;
-
-  const MyApp({super.key, required this.valor, required this.title});
+class Tela2 extends StatelessWidget {
+  const Tela2({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(title: Text(this.title)),
-        body: Center(
-          child: Text(
-            "Hello World, o valor e ${this.valor}",
-            style: TextStyle(fontSize: 30, color: Colors.black),
-          ),
+    return Scaffold(
+      appBar: AppBar(title: Text('Tela 2'), backgroundColor: Colors.green),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Retornar para tela 1'),
         ),
       ),
     );
   }
 }
-*/
